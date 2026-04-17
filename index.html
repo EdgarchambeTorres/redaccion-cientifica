@@ -756,7 +756,7 @@
     <div class="top-countdown-banner" style="background-color: var(--bw-navy); color: white;">
         <span>¡CUPÓN ESPECIAL ACTIVADO! -40% de DESCUENTO. Esta oferta expira en:</span>
         <span id="header-countdown" class="badge bg-gold ms-2 shadow-sm text-navy">
-            00:00:00
+            180 Días 00:00:00
         </span>
     </div>
 
@@ -828,13 +828,13 @@
                 <div class="col-lg-5 text-center position-relative mt-5 mt-lg-0">
                     <div class="d-inline-block position-relative shadow-lg rounded-4 bg-navy w-100"
                         style="padding: 10px; border: 2px solid var(--bw-gold); border-radius: 20px !important; transform: perspective(1000px) rotateY(-5deg); transition: transform 0.5s ease;">
-                        <!-- Video Nativo HTML5 -->
+                        <!-- Video VSL YouTube (Autoplay & Loop - nocookie bypass) -->
                         <div class="ratio ratio-16x9">
-                            <video style="border-radius: 12px; width: 100%; height: 100%; object-fit: cover;" autoplay
-                                loop muted playsinline controls>
-                                <source src="hero-video.mp4" type="video/mp4">
-                                <p class="text-white mt-5">Coloca tu archivo "hero-video.mp4" en la carpeta.</p>
-                            </video>
+                            <iframe style="border-radius: 12px;"
+                                src="https://www.youtube-nocookie.com/embed/9jqmKVPTWoE?autoplay=1&mute=1&loop=1&playlist=9jqmKVPTWoE"
+                                title="Video de Presentación" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
                         </div>
                         <button
                             class="position-absolute shadow-lg border-0 bg-white text-navy fw-bold rounded-pill px-4 py-2"
@@ -1361,11 +1361,33 @@
                                 <strong>GARANTÍA DE 7 DÍAS:</strong> Le devolvemos su dinero, sin preguntas, dentro de
                                 los 7 días posteriores a su compra.
                             </div>
-                            <a href="https://pay.hotmart.com/Q99622319J?off=10x647il" target="_blank"
+                            <!-- Botón que despliega el Cupón -->
+                            <button type="button" 
                                 class="btn-gold py-3 fs-4 shadow-lg text-uppercase btn-lg btn-pulse"
-                                style="border-radius: 8px;">
+                                style="border-radius: 8px; width: 100%; border: none;"
+                                data-bs-toggle="collapse" data-bs-target="#couponRevealBox" aria-expanded="false" aria-controls="couponRevealBox">
                                 <i class="bi bi-cart-check me-2"></i> Quiero Inscribirme Ahora
-                            </a>
+                            </button>
+                            
+                            <!-- Caja del Cupón Oculta (Diseño adaptado) -->
+                            <div class="collapse mt-3" id="couponRevealBox">
+                                <div class="bg-light border border-dashed rounded p-4 mb-2 text-center shadow-sm" style="border: 2px dashed var(--bw-gold) !important; position: relative;">
+                                    <span class="d-block text-uppercase fw-bold text-navy mb-2" style="font-size: 0.85rem;"><i class="bi bi-gift-fill text-danger me-1"></i> TU CÓDIGO DE CUPÓN ES:</span>
+                                    <h4 class="fw-bold text-success mb-3 p-2 bg-white rounded border d-inline-block" style="letter-spacing: 1px; word-break: break-all;">QUIERO_MI_CURSO_AHORA</h4>
+                                    
+                                    <button class="btn btn-sm btn-outline-navy rounded-pill mb-3 fw-bold px-3 py-2 d-block mx-auto" onclick="navigator.clipboard.writeText('QUIERO_MI_CURSO_AHORA'); this.innerHTML='<i class=\'bi bi-check-lg\'></i> ¡Copiado!'; setTimeout(()=>this.innerHTML='<i class=\'bi bi-copy\'></i> Copiar Cupón',2000);"><i class="bi bi-copy"></i> Copiar Cupón</button>
+                                    
+                                    <div class="bg-white rounded p-3 border mb-3 shadow-sm">
+                                        <p class="mb-1 fs-6 text-muted">Precio Normal: <del class="text-danger">$550 USD</del></p>
+                                        <p class="mb-0 fs-5 text-success fw-bold">🔥 Precio Final: $330 USD</p>
+                                    </div>
+                                    
+                                    <a href="https://pay.hotmart.com/Q99622319J?off=10x647il" target="_blank" class="btn btn-success fw-bold w-100 fs-5 shadow-sm text-uppercase py-3 btn-pulse" style="border-radius: 8px; background-color: #198754; color: white;">
+                                        <i class="bi bi-arrow-right-circle me-1"></i> Ir al Pago con Descuento
+                                    </a>
+                                </div>
+                            </div>
+                            
                             <p class="small text-muted mt-2 mb-0"><i class="bi bi-lock-fill"></i> Tus datos están 100%
                                 seguros con Hotmart.</p>
                             <!-- Logos Metodos Pago -->
@@ -1493,7 +1515,7 @@
             </div>
             <div class="row mt-5 pt-4 border-top border-light border-opacity-25 text-center">
                 <div class="col-12">
-                    <p class="mb-0 small text-white-50">ESTE SITIO NO ES PARTE DE FACEBOOK NI GOOGLE INC. <br> &copy;
+                    <p class="mb-0 small text-white-50">&copy;
                         2026 Promoción Universitaria Oficial - Comercializado a través de Hotmart B.V.</p>
                 </div>
             </div>
@@ -1502,8 +1524,8 @@
 
     <!-- Mobile Sticky CTA (Sugerencia 1) -->
     <div class="d-block d-lg-none sticky-mobile-cta">
-        <a href="https://pay.hotmart.com/Q99622319J?off=10x647il" class="btn-gold-pulse">
-            <i class="bi bi-cart-check me-lg-2 fs-5"></i> Inscribirme por $550 USD
+        <a href="#inversion" class="btn-gold-pulse text-decoration-none">
+            <i class="bi bi-cart-check me-lg-2 fs-5"></i> Quiero Inscribirme Ahora
         </a>
     </div>
 
@@ -1519,8 +1541,8 @@
         </a>
     </div>
 
-    <!-- Toast Promo Cupon (Desde curso1.html) -->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
+    <!-- Toast Promo Cupon (Movido a Arriba al Centro para no tapar burbujas) -->
+    <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1080; margin-top: 80px;">
         <div id="promoToast" class="toast align-items-center text-white bg-navy border-0 shadow-lg" role="alert"
             aria-live="assertive" aria-atomic="true" data-bs-autohide="false"
             style="border-left: 5px solid var(--bw-gold) !important; border-radius: 8px;">
@@ -1636,32 +1658,7 @@
             navbar.style.top = '40px';
         }
 
-        // COUNTDOWN TIMER LOGIC (Suggestion 1)
-        function startTimer(duration, display) {
-            var timer = duration, hours, minutes, seconds;
-            setInterval(function () {
-                hours = parseInt(timer / 3600, 10);
-                minutes = parseInt((timer % 3600) / 60, 10);
-                seconds = parseInt(timer % 60, 10);
 
-                hours = hours < 10 ? "0" + hours : hours;
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                display.textContent = hours + ":" + minutes + ":" + seconds;
-
-                if (--timer < 0) {
-                    timer = 0; // Se queda en cero. Para resetear: timer = duration;
-                }
-            }, 1000);
-        }
-
-        window.onload = function () {
-            // Un contador "Falso-Real" de 3 horas 34 minutos 5 segundos
-            var fakeUrgencyTime = 60 * 60 * 3 + 34 * 60 + 5;
-            var display = document.querySelector('#header-countdown');
-            startTimer(fakeUrgencyTime, display);
-        };
 
         // FOMO NOTIFICATIONS LOGIC
         const fomoData = [
@@ -1770,6 +1767,11 @@
                         document.getElementById("popup-hours").innerText = hours.toString().padStart(2, '0');
                         document.getElementById("popup-minutes").innerText = minutes.toString().padStart(2, '0');
                         document.getElementById("popup-seconds").innerText = seconds.toString().padStart(2, '0');
+                    }
+
+                    const headerCountdown = document.getElementById("header-countdown");
+                    if (headerCountdown) {
+                        headerCountdown.innerText = days + " Días " + hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0');
                     }
                 }
             }, 1000);
