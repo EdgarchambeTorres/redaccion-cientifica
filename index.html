@@ -1514,14 +1514,7 @@
             // --- PEGA AQUÍ TU URL DE GOOGLE APPS SCRIPT ---
             const scriptURL = 'https://script.google.com/macros/s/AKfycby7SPVQJnQXlfEoiKfBSxeN4EzFG76bwHSd_X2vAv0bPEgebcv0MK_Pc2z_ukY_0qN1/exec';
 
-            if (scriptURL === 'https://script.google.com/macros/s/AKfycby7SPVQJnQXlfEoiKfBSxeN4EzFG76bwHSd_X2vAv0bPEgebcv0MK_Pc2z_ukY_0qN1/exec') {
-                alertBox.className = 'alert alert-warning small mb-0 p-2';
-                alertBox.innerHTML = '<i class="bi bi-exclamation-triangle-fill me-1"></i> Falta configurar la URL de Google Sheets en el código.';
-                alertBox.classList.remove('d-none');
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-                return;
-            }
+
 
             fetch(scriptURL, { method: 'POST', body: new FormData(this) })
                 .then(response => {
