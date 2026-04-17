@@ -753,9 +753,12 @@
     </div>
 
     <!-- TOP COUNTDOWN BANNER (SUGGESTION 1) -->
-    <div class="top-countdown-banner" style="background-color: var(--bw-navy); color: white;">
-        <span>¡CUPÓN ESPECIAL ACTIVADO! -40% de DESCUENTO. Esta oferta expira en:</span>
-        <span id="header-countdown" class="badge bg-gold ms-2 shadow-sm text-navy">
+    <div class="top-countdown-banner"
+        style="background: linear-gradient(90deg, var(--bw-gold) 0%, #E0C18A 100%); color: var(--bw-navy); border-bottom: 2px solid #fff; box-shadow: 0px 4px 10px rgba(0,0,0,0.15); font-weight: 600;">
+        <span><i class="bi bi-stars text-danger me-1"></i> ¡CUPÓN ESPECIAL ACTIVADO! -40% de DESCUENTO. Esta oferta
+            expira en:</span>
+        <span id="header-countdown" class="badge bg-navy ms-2 shadow-sm text-white"
+            style="font-size: 0.9rem; letter-spacing: 0.5px;">
             180 Días 00:00:00
         </span>
     </div>
@@ -818,10 +821,10 @@
                         </div>
                     </div>
 
-                    <div class="d-flex gap-3 flex-wrap">
+                    <div class="d-flex gap-3 flex-wrap align-items-center">
                         <a href="#inversion" class="btn-gold px-4 py-3 fw-bold fs-5 shadow-sm btn-pulse"><i
                                 class="bi bi-cart3 me-2"></i> Inscribirte al Curso</a>
-                        <a href="#modulos" class="btn-outline-gold px-4 py-3">Ver Temario Completo</a>
+                        <a href="#modulos" class="btn-outline-gold px-4 py-3 mt-1">Ver Temario Completo</a>
                     </div>
                 </div>
                 <!-- Facebook Reel VSL (Video Sales Letter) horizontado -->
@@ -1362,32 +1365,43 @@
                                 los 7 días posteriores a su compra.
                             </div>
                             <!-- Botón que despliega el Cupón -->
-                            <button type="button" 
-                                class="btn-gold py-3 fs-4 shadow-lg text-uppercase btn-lg btn-pulse"
-                                style="border-radius: 8px; width: 100%; border: none;"
-                                data-bs-toggle="collapse" data-bs-target="#couponRevealBox" aria-expanded="false" aria-controls="couponRevealBox">
+                            <button type="button" class="btn-gold py-3 fs-4 shadow-lg text-uppercase btn-lg btn-pulse"
+                                style="border-radius: 8px; width: 100%; border: none;" data-bs-toggle="collapse"
+                                data-bs-target="#couponRevealBox" aria-expanded="false" aria-controls="couponRevealBox">
                                 <i class="bi bi-cart-check me-2"></i> Quiero Inscribirme Ahora
                             </button>
-                            
+
                             <!-- Caja del Cupón Oculta (Diseño adaptado) -->
                             <div class="collapse mt-3" id="couponRevealBox">
-                                <div class="bg-light border border-dashed rounded p-4 mb-2 text-center shadow-sm" style="border: 2px dashed var(--bw-gold) !important; position: relative;">
-                                    <span class="d-block text-uppercase fw-bold text-navy mb-2" style="font-size: 0.85rem;"><i class="bi bi-gift-fill text-danger me-1"></i> TU CÓDIGO DE CUPÓN ES:</span>
-                                    <h4 class="fw-bold text-success mb-3 p-2 bg-white rounded border d-inline-block" style="letter-spacing: 1px; word-break: break-all;">QUIERO_MI_CURSO_AHORA</h4>
-                                    
-                                    <button class="btn btn-sm btn-outline-navy rounded-pill mb-3 fw-bold px-3 py-2 d-block mx-auto" onclick="navigator.clipboard.writeText('QUIERO_MI_CURSO_AHORA'); this.innerHTML='<i class=\'bi bi-check-lg\'></i> ¡Copiado!'; setTimeout(()=>this.innerHTML='<i class=\'bi bi-copy\'></i> Copiar Cupón',2000);"><i class="bi bi-copy"></i> Copiar Cupón</button>
-                                    
+                                <div class="bg-light border border-dashed rounded p-4 mb-2 text-center shadow-sm"
+                                    style="border: 2px dashed var(--bw-gold) !important; position: relative;">
+                                    <span class="d-block text-uppercase fw-bold text-navy mb-2"
+                                        style="font-size: 0.85rem;"><i class="bi bi-gift-fill text-danger me-1"></i> TU
+                                        CÓDIGO DE CUPÓN ES:</span>
+                                    <h4 class="fw-bold text-success mb-3 p-2 bg-white rounded border d-inline-block text-center"
+                                        style="letter-spacing: 1px;">
+                                        QUIERO_MI_CURSO_<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AHORA
+                                    </h4>
+
+                                    <button
+                                        class="btn btn-sm btn-outline-navy rounded-pill mb-3 fw-bold px-3 py-2 d-block mx-auto"
+                                        onclick="navigator.clipboard.writeText('QUIERO_MI_CURSO_AHORA'); this.innerHTML='<i class=\'bi bi-check-lg\'></i> ¡Copiado!'; setTimeout(()=>this.innerHTML='<i class=\'bi bi-copy\'></i> Copiar Cupón',2000);"><i
+                                            class="bi bi-copy"></i> Copiar Cupón</button>
+
                                     <div class="bg-white rounded p-3 border mb-3 shadow-sm">
-                                        <p class="mb-1 fs-6 text-muted">Precio Normal: <del class="text-danger">$550 USD</del></p>
+                                        <p class="mb-1 fs-6 text-muted">Precio Normal: <del class="text-danger">$550
+                                                USD</del></p>
                                         <p class="mb-0 fs-5 text-success fw-bold">🔥 Precio Final: $330 USD</p>
                                     </div>
-                                    
-                                    <a href="https://pay.hotmart.com/Q99622319J?off=10x647il" target="_blank" class="btn btn-success fw-bold w-100 fs-5 shadow-sm text-uppercase py-3 btn-pulse" style="border-radius: 8px; background-color: #198754; color: white;">
+
+                                    <a href="https://pay.hotmart.com/Q99622319J?off=10x647il" target="_blank"
+                                        class="btn btn-success fw-bold w-100 fs-5 shadow-sm text-uppercase py-3 btn-pulse"
+                                        style="border-radius: 8px; background-color: #198754; color: white;">
                                         <i class="bi bi-arrow-right-circle me-1"></i> Ir al Pago con Descuento
                                     </a>
                                 </div>
                             </div>
-                            
+
                             <p class="small text-muted mt-2 mb-0"><i class="bi bi-lock-fill"></i> Tus datos están 100%
                                 seguros con Hotmart.</p>
                             <!-- Logos Metodos Pago -->
@@ -1400,6 +1414,134 @@
             </div>
         </div>
     </section>
+
+    <!-- CONTACT SECTION (Integrado al Diseño BGU) -->
+    <section id="contacto" class="section-padding bg-navy text-white">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5">
+                    <h2 class="font-heading fw-bold text-gold mb-3">Habla con un Asesor Académico</h2>
+                    <p class="fs-5 text-white-50 mb-4">
+                        Nuestro equipo está listo para brindarte información personalizada, sin ningún compromiso.
+                    </p>
+                    <ul class="list-unstyled mb-0 fs-5 text-white">
+                        <li class="mb-3"><i class="bi bi-check-circle-fill text-gold me-2"></i> Recibe el temario
+                            detallado en PDF.</li>
+                        <li class="mb-3"><i class="bi bi-check-circle-fill text-gold me-2"></i> Consulta opciones de
+                            pago y cuotas.</li>
+                        <li><i class="bi bi-check-circle-fill text-gold me-2"></i> Resuelve dudas sobre la inscripción.
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-7">
+                    <div class="bg-white text-navy p-4 p-md-5 rounded-4 shadow-lg position-relative"
+                        style="border: 2px solid var(--bw-gold);">
+                        <h4 class="fw-bold mb-1 text-center">¿Tienes Preguntas?</h4>
+                        <p class="text-center text-muted mb-4 fs-6">Déjanos tus datos y un asesor te contactará.</p>
+                        <form id="registroForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold small text-muted">Nombres *</label>
+                                    <input type="text" class="form-control bg-light border-0" name="nombres" required
+                                        placeholder="Ej. Juan">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold small text-muted">Apellidos *</label>
+                                    <input type="text" class="form-control bg-light border-0" name="apellidos" required
+                                        placeholder="Ej. Pérez">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold small text-muted">Celular</label>
+                                    <div class="input-group border-0">
+                                        <span class="input-group-text bg-light border-0"><i
+                                                class="bi bi-phone"></i></span>
+                                        <input type="tel" class="form-control bg-light border-0" name="celular"
+                                            placeholder="+51 999 888 777">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold small text-muted">Correo electrónico *</label>
+                                    <input type="email" class="form-control bg-light border-0" name="correo" required
+                                        placeholder="tu@email.com">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold small text-muted">País *</label>
+                                    <select class="form-select bg-light border-0" name="pais" required>
+                                        <option value="" disabled selected>Selecciona tu país</option>
+                                        <option value="Perú">Perú</option>
+                                        <option value="México">México</option>
+                                        <option value="Colombia">Colombia</option>
+                                        <option value="Chile">Chile</option>
+                                        <option value="Argentina">Argentina</option>
+                                        <option value="Ecuador">Ecuador</option>
+                                        <option value="Bolivia">Bolivia</option>
+                                        <option value="Otro">Otro país de Latinoamérica</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold small text-muted">Comentarios</label>
+                                    <textarea class="form-control bg-light border-0" name="comentarios" rows="4"
+                                        placeholder="¿Tienes alguna duda específica?"></textarea>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn-gold w-100 py-3 fw-bold fs-5 shadow-sm btn-pulse"
+                                        style="border-radius: 8px;">
+                                        <i class="bi bi-send-fill me-2"></i> Solicitar Información
+                                    </button>
+                                </div>
+                                <div class="col-12 text-center mt-3">
+                                    <div id="formAlert" class="alert d-none small mb-0 p-2" role="alert"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Script de Envío a Google Sheets (Listo para Script real) -->
+    <script>
+        document.getElementById('registroForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const btn = this.querySelector('button[type="submit"]');
+            const alertBox = document.getElementById('formAlert');
+            const originalText = btn.innerHTML;
+
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Enviando...';
+            btn.disabled = true;
+
+            // --- PEGA AQUÍ TU URL DE GOOGLE APPS SCRIPT ---
+            const scriptURL = 'https://script.google.com/macros/s/AKfycby7SPVQJnQXlfEoiKfBSxeN4EzFG76bwHSd_X2vAv0bPEgebcv0MK_Pc2z_ukY_0qN1/exec';
+
+            if (scriptURL === 'https://script.google.com/macros/s/AKfycby7SPVQJnQXlfEoiKfBSxeN4EzFG76bwHSd_X2vAv0bPEgebcv0MK_Pc2z_ukY_0qN1/exec') {
+                alertBox.className = 'alert alert-warning small mb-0 p-2';
+                alertBox.innerHTML = '<i class="bi bi-exclamation-triangle-fill me-1"></i> Falta configurar la URL de Google Sheets en el código.';
+                alertBox.classList.remove('d-none');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                return;
+            }
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(this) })
+                .then(response => {
+                    alertBox.className = 'alert alert-success small mb-0 p-2';
+                    alertBox.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i> ¡Tus datos han sido enviados con éxito! Un asesor te contactará pronto.';
+                    alertBox.classList.remove('d-none');
+                    this.reset();
+                    setTimeout(() => alertBox.classList.add('d-none'), 8000);
+                })
+                .catch(error => {
+                    alertBox.className = 'alert alert-danger small mb-0 p-2';
+                    alertBox.innerHTML = '<i class="bi bi-exclamation-triangle-fill me-1"></i> Error al conectar. Intenta de nuevo o contáctanos por WhatsApp.';
+                    alertBox.classList.remove('d-none');
+                })
+                .finally(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                });
+        });
+    </script>
 
     <!-- FAQ (bg-light-alt) -->
     <section id="faq" class="section-padding bg-light-alt">
@@ -1545,20 +1687,20 @@
     <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1080; margin-top: 80px;">
         <div id="promoToast" class="toast align-items-center text-white bg-navy border-0 shadow-lg" role="alert"
             aria-live="assertive" aria-atomic="true" data-bs-autohide="false"
-            style="border-left: 5px solid var(--bw-gold) !important; border-radius: 8px;">
-            <div class="d-flex flex-column p-2">
-                <div class="toast-body">
-                    <h6 class="text-gold fw-bold mb-2"><i class="bi bi-tag-fill me-2"></i>¡Cupón Desbloqueado!</h6>
-                    ¡No te lo pierdas! Obtén un <strong>40% de descuento</strong> en el curso de Redacción de Artículos
-                    Científicos. Válido solo por esta semana.
-                    <div class="mt-3 pt-2 border-top border-secondary text-center">
-                        <a href="#inversion" class="btn-gold btn-sm d-block text-decoration-none py-2"
-                            onclick="document.getElementById('promoToast').classList.remove('show');">Ver Promoción
-                            Ahora</a>
-                    </div>
-                </div>
+            style="border: 2px dashed var(--bw-gold) !important; border-radius: 12px; min-width: 300px;">
+            <div class="d-flex flex-column p-3 text-center position-relative">
                 <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-2"
                     data-bs-dismiss="toast" aria-label="Close"></button>
+                <div class="toast-body p-0 mt-2">
+                    <span class="badge bg-danger mb-2 px-3 py-1">Obtén 40% OFF</span>
+                    <h6 class="text-gold fw-bold mb-1 fs-5">Este descuento exclusivo</h6>
+                    <small class="d-block mb-3 text-white-50">Válido para tu inscripción de esta semana.</small>
+                    <a href="#inversion" class="btn-gold btn-sm d-block text-decoration-none py-2 fw-bold"
+                        onclick="document.getElementById('promoToast').classList.remove('show');"
+                        style="border-radius: 30px;">
+                        <i class="bi bi-ticket-perforated-fill me-1"></i> ¡Aprovechar Oferta!
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -1581,8 +1723,10 @@
                         style="border: 2px dashed var(--bw-navy) !important; position: relative;">
                         <span class="d-block text-uppercase fw-bold text-navy mb-1" style="font-size: 0.8rem;">TU CÓDIGO
                             DE CUPÓN ES:</span>
-                        <h4 class="fw-bold text-success mb-2" style="letter-spacing: 1px; word-break: break-all;"
-                            id="couponCodeText">QUIERO_MI_CURSO_AHORA</h4>
+                        <h4 class="fw-bold text-success mb-2 text-center" style="letter-spacing: 1px;"
+                            id="couponCodeText">
+                            QUIERO_MI_CURSO_<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AHORA
+                        </h4>
                         <button class="btn btn-sm btn-outline-primary rounded-pill mb-3 fw-bold"
                             onclick="navigator.clipboard.writeText('QUIERO_MI_CURSO_AHORA'); this.innerHTML='<i class=\'bi bi-check-lg\'></i> ¡Copiado!'; setTimeout(()=>this.innerHTML='Copiar Cupón',2000);"><i
                                 class="bi bi-copy"></i> Copiar Cupón</button>
@@ -1646,10 +1790,8 @@
         window.addEventListener('scroll', function () {
             if (window.scrollY > 40) {
                 navbar.classList.add('shadow-lg');
-                navbar.style.top = '0px';
             } else {
                 navbar.classList.remove('shadow-lg');
-                navbar.style.top = '40px';
             }
         });
 
