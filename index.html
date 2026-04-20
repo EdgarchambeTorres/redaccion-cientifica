@@ -25,13 +25,16 @@
     <!-- Styles -->
     <style>
         :root {
-            /* Blackwell Brand Colors */
-            --bw-navy: #1A4076;
-            --bw-navy-light: #2A5A9C;
+            /* Blackwell Brand Colors (Actualizado) */
+            --bw-navy: #003366;           /* Azul Blackwell */
+            --bw-navy-dark: #002855;      /* Azul Profundo */
+            --bw-navy-light: #0056B3;     /* Azul BGU Brillante */
+            --bw-cyan: #0099ff;           /* Celeste brillante */
+            
             --bw-gold: #C19B61;
             --bw-gold-light: #E0C18A;
-            --bw-white: #FFFFFF;
-            --bw-gray-light: #F4F6F9;
+            --bw-white: #FFFFFF;          /* Blanco Puro */
+            --bw-gray-light: #F8F9FA;     /* Gris Nube */
             --bw-gray-text: #4A5568;
             --bw-gray-dark: #2D3748;
 
@@ -49,6 +52,11 @@
             /* Space for fixed banner */
         }
 
+        section,
+        [id] {
+            scroll-margin-top: 130px;
+        }
+
         h1,
         h2,
         h3,
@@ -60,28 +68,58 @@
             font-weight: 700;
         }
 
-        /* Top Banner */
-        .top-countdown-banner {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: var(--bw-gold);
-            color: var(--bw-navy);
-            z-index: 1050;
-            padding: 0.5rem 0;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.95rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        /* Promo Countdown Moderno */
+        .promo-countdown-wrapper {
+            background-color: var(--bw-white);
+            border-bottom: 2px solid var(--bw-gray-light);
+            z-index: 1040;
+            padding: 1.25rem 0;
+            transition: all 0.3s ease;
         }
 
-        .top-countdown-banner .badge {
-            background-color: var(--bw-navy) !important;
-            color: var(--bw-white) !important;
-            font-size: 1rem;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
+        .countdown-block {
+            min-width: 75px;
+            padding: 8px 12px;
+            background-color: var(--bw-white);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-bottom: 3px solid var(--bw-navy-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .countdown-block:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 51, 102, 0.1) !important;
+        }
+
+        .countdown-num {
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+
+        .countdown-label {
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            color: var(--bw-gray-text);
+        }
+
+        @media (max-width: 767px) {
+            .promo-countdown-wrapper {
+                padding: 1rem 0;
+            }
+            .countdown-block {
+                min-width: 60px;
+                padding: 6px 8px;
+            }
+            .countdown-num {
+                font-size: 1.4rem !important;
+            }
+            .countdown-label {
+                font-size: 0.6rem;
+            }
+            .promo-text-mobile {
+                font-size: 1.1rem !important;
+                margin-bottom: 0.75rem;
+            }
         }
 
         /* Top Header Navigation */
@@ -124,8 +162,9 @@
         }
 
         .btn-gold:hover {
-            background-color: transparent;
-            color: var(--bw-gold);
+            background-color: var(--bw-gold-light);
+            color: var(--bw-navy) !important;
+            border-color: var(--bw-gold-light);
         }
 
         .btn-outline-gold {
@@ -143,8 +182,9 @@
         }
 
         .btn-outline-gold:hover {
-            background-color: var(--bw-gold);
-            color: var(--bw-white);
+            background-color: var(--bw-gold-light);
+            color: var(--bw-navy);
+            border-color: var(--bw-gold-light);
         }
 
         .bg-gold {
@@ -654,66 +694,52 @@
         /* Mobile adjustments */
         @media (max-width: 991px) {
             .floating-social-widget {
-                bottom: 135px;
+                bottom: 85px;
+                transform: scale(0.85);
+                transform-origin: bottom right;
             }
 
             body {
                 padding-bottom: 75px;
             }
 
-            .fomo-notification {
-                bottom: 140px !important;
-                left: 50% !important;
-                transform: translate(-50%, 150%) !important;
-                width: 90%;
-            }
-
-            .fomo-notification.show {
-                transform: translate(-50%, 0) !important;
-            }
         }
 
-        /* FOMO Notification */
-        .fomo-notification {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: var(--bw-white);
-            border-left: 4px solid var(--bw-gold);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 8px;
-            z-index: 1060;
+        /* Botones Flotantes Agrupados (Expandibles) */
+        .group-hover-widget {
             display: flex;
+            flex-direction: column;
             align-items: center;
             gap: 15px;
-            transform: translateY(150%);
+        }
+
+        .social-links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
             opacity: 0;
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            max-width: 350px;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.8);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            pointer-events: none;
         }
 
-        .fomo-notification.show {
-            transform: translateY(0);
+        .group-hover-widget:hover .social-links-container {
             opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
         }
 
-        .fomo-img {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            object-fit: cover;
+        .main-chat-btn {
+            background-color: var(--bw-navy);
+            color: white;
+            animation: pulse-animation 2s infinite;
         }
-
-        .fomo-text {
-            font-size: 0.9rem;
-            margin: 0;
-            line-height: 1.3;
-        }
-
-        .fomo-time {
-            font-size: 0.75rem;
-            color: var(--bw-gray-text);
+        
+        .main-chat-btn:hover {
+            color: white;
+            transform: scale(1.1);
         }
 
         .floating-social-btn {
@@ -752,19 +778,10 @@
         <div class="reading-progress-bar" id="readingProgressBar"></div>
     </div>
 
-    <!-- TOP COUNTDOWN BANNER (SUGGESTION 1) -->
-    <div class="top-countdown-banner"
-        style="background: linear-gradient(90deg, var(--bw-gold) 0%, #E0C18A 100%); color: var(--bw-navy); border-bottom: 2px solid #fff; box-shadow: 0px 4px 10px rgba(0,0,0,0.15); font-weight: 600;">
-        <span><i class="bi bi-stars text-danger me-1"></i> ¡CUPÓN ESPECIAL ACTIVADO! -40% de DESCUENTO. Esta oferta
-            expira en:</span>
-        <span id="header-countdown" class="badge bg-navy ms-2 shadow-sm text-white"
-            style="font-size: 0.9rem; letter-spacing: 0.5px;">
-            180 Días 00:00:00
-        </span>
-    </div>
+
 
     <!-- Header -->
-    <header class="academic-navbar sticky-top">
+    <header class="academic-navbar">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark p-0">
                 <a class="navbar-brand" href="#">
@@ -849,6 +866,38 @@
             </div>
         </div>
     </section>
+
+    <!-- Modern Sticky Countdown Banner -->
+    <div class="promo-countdown-wrapper sticky-top shadow-sm">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-2 gap-md-4">
+                <div class="fw-bold text-navy promo-text-mobile text-center fs-5">
+                    <i class="bi bi-stopwatch text-danger me-2"></i>¡La oferta del 40% OFF termina en:
+                </div>
+                <div class="d-flex align-items-center gap-2 countdown-blocks" id="main-countdown-container">
+                    <div class="countdown-block text-center shadow-sm rounded">
+                        <div class="countdown-num fw-bold text-navy fs-2" id="main-cd-days">00</div>
+                        <div class="countdown-label fw-bold">DÍAS</div>
+                    </div>
+                    <div class="fw-bold text-muted fs-3">:</div>
+                    <div class="countdown-block text-center shadow-sm rounded">
+                        <div class="countdown-num fw-bold text-navy fs-2" id="main-cd-hours">00</div>
+                        <div class="countdown-label fw-bold">HORAS</div>
+                    </div>
+                    <div class="fw-bold text-muted fs-3">:</div>
+                    <div class="countdown-block text-center shadow-sm rounded">
+                        <div class="countdown-num fw-bold text-navy fs-2" id="main-cd-minutes">00</div>
+                        <div class="countdown-label fw-bold">MIN</div>
+                    </div>
+                    <div class="fw-bold text-muted fs-3">:</div>
+                    <div class="countdown-block text-center shadow-sm rounded">
+                        <div class="countdown-num fw-bold text-navy fs-2" id="main-cd-seconds">00</div>
+                        <div class="countdown-label fw-bold">SEG</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Slider de Experiencia (bg-light-alt) -->
     <section class="section-padding-sm bg-light-alt">
@@ -1375,13 +1424,13 @@
                             <div class="collapse mt-3" id="couponRevealBox">
                                 <div class="bg-light border border-dashed rounded p-4 mb-2 text-center shadow-sm"
                                     style="border: 2px dashed var(--bw-gold) !important; position: relative;">
-                                    <span class="d-block text-uppercase fw-bold text-navy mb-2"
+                                    <span class="d-block text-uppercase fw-bold text-navy mb-2 text-center"
                                         style="font-size: 0.85rem;"><i class="bi bi-gift-fill text-danger me-1"></i> TU
                                         CÓDIGO DE CUPÓN ES:</span>
-                                    <h4 class="fw-bold text-success mb-3 p-2 bg-white rounded border d-inline-block text-center"
-                                        style="letter-spacing: 1px;">
-                                        QUIERO_MI_CURSO_<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AHORA
-                                    </h4>
+                                    <div class="fw-bold text-success mb-3 p-2 bg-white rounded border d-inline-block text-center fs-5"
+                                        style="letter-spacing: 1px; line-height: 1.3;">
+                                        QUIERO_MI_CURSO_<br>AHORA
+                                    </div>
 
                                     <button
                                         class="btn btn-sm btn-outline-navy rounded-pill mb-3 fw-bold px-3 py-2 d-block mx-auto"
@@ -1632,7 +1681,7 @@
                         <li class="mt-3">
                             <div class="d-flex justify-content-center justify-content-sm-start mt-2">
                                 <a href="https://linktr.ee/BGU_hotmart" target="_blank" rel="noopener noreferrer"
-                                    class="btn btn-outline-light rounded-pill btn-sm d-inline-flex align-items-center mt-2 px-3 text-white border-white border-opacity-25 shadow-sm">
+                                    class="btn btn-outline-gold rounded-pill btn-sm d-inline-flex align-items-center mt-2 px-3 shadow-sm">
                                     <i class="bi bi-link-45deg fs-4 me-1 text-gold"></i> BGU Hotmart (Linktree)
                                 </a>
                             </div>
@@ -1664,16 +1713,21 @@
         </a>
     </div>
 
-    <!-- Botones Flotantes -->
-    <div class="floating-social-widget">
-        <a href="https://m.me/blackwelluniversity" target="_blank" class="floating-social-btn facebook-btn"
-            title="Chatea en Messenger">
-            <i class="bi bi-messenger"></i>
-        </a>
-        <a href="https://wa.me/1234567890?text=Hola,%20quiero%20información%20sobre%20el%20curso%20de%20Redacción%20de%20Artículos%20Científicos"
-            target="_blank" class="floating-social-btn whatsapp-btn" title="Atención Rápida por WhatsApp">
-            <i class="bi bi-whatsapp"></i>
-        </a>
+    <!-- Botones Flotantes Agrupados -->
+    <div class="floating-social-widget group-hover-widget">
+        <div class="social-links-container">
+            <a href="https://m.me/blackwelluniversity" target="_blank" class="floating-social-btn facebook-btn"
+                title="Chatea en Messenger">
+                <i class="bi bi-messenger"></i>
+            </a>
+            <a href="https://wa.me/1234567890?text=Hola,%20quiero%20información%20sobre%20el%20curso%20de%20Redacción%20de%20Artículos%20Científicos"
+                target="_blank" class="floating-social-btn whatsapp-btn" title="Atención Rápida por WhatsApp">
+                <i class="bi bi-whatsapp"></i>
+            </a>
+        </div>
+        <button class="floating-social-btn main-chat-btn shadow-lg" title="Atención al Cliente" onclick="if(window.tidioChatApi){window.tidioChatApi.display(true);window.tidioChatApi.open()}">
+            <i class="bi bi-chat-dots-fill fs-3"></i>
+        </button>
     </div>
 
     <!-- Toast Promo Cupon (Movido a Arriba al Centro para no tapar burbujas) -->
@@ -1712,14 +1766,13 @@
                 <div class="modal-body p-4 text-center">
                     <p class="fs-5 text-muted mb-2">¡No te lo pierdas! Obtén un <strong>40% de descuento</strong> en el
                         curso de Redacción de Artículos Científicos.</p>
-                    <div class="bg-light border border-dashed rounded p-3 mb-3"
+                    <div class="bg-light border border-dashed rounded p-3 mb-3 text-center"
                         style="border: 2px dashed var(--bw-navy) !important; position: relative;">
-                        <span class="d-block text-uppercase fw-bold text-navy mb-1" style="font-size: 0.8rem;">TU CÓDIGO
-                            DE CUPÓN ES:</span>
-                        <h4 class="fw-bold text-success mb-2 text-center" style="letter-spacing: 1px;"
+                        <h6 class="text-uppercase fw-bold text-navy mb-2"><i class="bi bi-gift-fill text-danger me-1"></i> TU CÓDIGO DE CUPÓN ES:</h6>
+                        <div class="fw-bold text-success mb-3 fs-5" style="letter-spacing: 1px; word-break: break-word; line-height: 1.3;"
                             id="couponCodeText">
-                            QUIERO_MI_CURSO_<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AHORA
-                        </h4>
+                            QUIERO_MI_CURSO_<br>AHORA
+                        </div>
                         <button class="btn btn-sm btn-outline-primary rounded-pill mb-3 fw-bold"
                             onclick="navigator.clipboard.writeText('QUIERO_MI_CURSO_AHORA'); this.innerHTML='<i class=\'bi bi-check-lg\'></i> ¡Copiado!'; setTimeout(()=>this.innerHTML='Copiar Cupón',2000);"><i
                                 class="bi bi-copy"></i> Copiar Cupón</button>
@@ -1764,97 +1817,28 @@
         </div>
     </div>
 
-    <!-- FOMO Notification (Sugerencia 1) -->
-    <div class="fomo-notification" id="fomoWidget">
-        <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=1"
-            id="fomoImg" class="fomo-img shadow-sm" alt="Usuario">
-        <div>
-            <p class="fomo-text"><strong id="fomoName" class="text-navy">Carlos desde Colombia</strong> acaba de
-                adquirir la certificación.</p>
-            <span class="fomo-time" id="fomoTime">Hace 2 minutos</span>
-        </div>
-    </div>
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Navbar Scrolled Effect & Top Banner Compensations
-        const navbar = document.querySelector('.academic-navbar');
-        window.addEventListener('scroll', function () {
-            if (window.scrollY > 40) {
-                navbar.classList.add('shadow-lg');
-            } else {
-                navbar.classList.remove('shadow-lg');
-            }
-        });
 
-        // Initial set if page loads not at top
-        if (window.scrollY <= 40) {
-            navbar.style.top = '40px';
-        }
-
-
-
-        // FOMO NOTIFICATIONS LOGIC
-        const fomoData = [
-            { name: "Dra. Elena desde México", action: "acaba de adquirir la certificación.", time: "Hace 5 minutos", img: "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=1" },
-            { name: "Dr. Roberto desde Chile", action: "accedió al 50% de Descuento.", time: "Hace 12 minutos", img: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=1" },
-            { name: "Lic. Laura desde Perú", action: "alcanzó la meta de publicación.", time: "Hace 23 minutos", img: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=1" },
-            { name: "Alguien desde España", action: "está completando su pago seguro ahora mismo...", time: "¡En este instante!", img: "https://images.pexels.com/photos/4145151/pexels-photo-4145151.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=1" },
-            { name: "Mgtr. Juan desde Bolivia", action: "separó su cupo exitosamente.", time: "Hace 2 minutos", img: "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=1" },
-            { name: "Dra. Sofía desde Argentina", action: "descargó el temario y se inscribió.", time: "Hace 8 minutos", img: "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=1" },
-            { name: "Un académico de Ecuador", action: "tomó el último cupo con bono.", time: "Hace 1 minuto", img: "https://images.pexels.com/photos/3727459/pexels-photo-3727459.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=1" }
-        ];
-
-        let fomoWidget = document.getElementById('fomoWidget');
-
-        function showFomo() {
-            if (!fomoWidget) return;
-            // Evitar repetición usando un random
-            const randomIndex = Math.floor(Math.random() * fomoData.length);
-            const data = fomoData[randomIndex];
-
-            document.getElementById('fomoName').innerText = data.name;
-            document.getElementById('fomoWidget').querySelector('.fomo-text').innerHTML = `<strong class="text-navy">${data.name}</strong> ${data.action}`;
-            document.getElementById('fomoTime').innerText = data.time;
-            document.getElementById('fomoImg').src = data.img;
-
-            // Mostrar animado
-            fomoWidget.classList.add('show');
-
-            // Ocultar después de 6 segundos
-            setTimeout(() => {
-                fomoWidget.classList.remove('show');
-            }, 6000);
-
-            // Programar el siguiente (entre 2 minutos (120000ms) y 3 minutos (180000ms) aleatoriamente)
-            let nextTime = Math.floor(Math.random() * (180000 - 120000 + 1) + 120000);
-            setTimeout(showFomo, nextTime + 6000);
-        }
-
-        // Arrancar el primer FOMO a los 15 segundos después de entrar en la página para no molestar rápido
-        setTimeout(showFomo, 15000);
-
-        // EXIT INTENT LOGIC
+        // EXIT INTENT LOGIC (Forzado sin sessionStorage para visualización constante)
         let exitIntentTriggered = false;
         document.addEventListener('mouseleave', function (e) {
             if (e.clientY <= 0 && !exitIntentTriggered) {
-                if (!sessionStorage.getItem('exitModalShown')) {
-                    exitIntentTriggered = true;
-                    sessionStorage.setItem('exitModalShown', 'true');
-                    var exitModal = new bootstrap.Modal(document.getElementById('exitModal'));
-                    exitModal.show();
-                }
+                exitIntentTriggered = true;
+                var exitModal = new bootstrap.Modal(document.getElementById('exitModal'));
+                exitModal.show();
             }
         });
 
-        // PROMO TOAST AUTOMATICO
+        // PROMO TOAST AUTOMATICO (Forzado sin sessionStorage)
         setTimeout(() => {
             const toastEl = document.getElementById('promoToast');
-            if (toastEl && !sessionStorage.getItem('promoShown')) {
+            if (toastEl) {
                 const toast = new bootstrap.Toast(toastEl);
                 toast.show();
-                sessionStorage.setItem('promoShown', 'true');
             }
         }, 5000); // Aparece a los 5 segundos
 
@@ -1877,13 +1861,13 @@
 
         // TEMPORIZADOR DE 3 MESES PARA EL MODAL
         function initModalCountdown() {
-            // Fija la fecha objetivo a 90 días desde la primera visita
-            let targetDate = localStorage.getItem('couponTargetDate');
+            // Fija la fecha objetivo a 180 días desde la primera visita (Forzado reinicio con V3)
+            let targetDate = localStorage.getItem('couponTargetDateV3');
             if (!targetDate) {
                 const date = new Date();
                 date.setDate(date.getDate() + 180); // 6 meses
                 targetDate = date.getTime();
-                localStorage.setItem('couponTargetDate', targetDate);
+                localStorage.setItem('couponTargetDateV3', targetDate);
             }
 
             setInterval(() => {
@@ -1896,6 +1880,7 @@
                     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+                    // Modal Countdown
                     const elDays = document.getElementById("popup-days");
                     if (elDays) {
                         elDays.innerText = days.toString().padStart(2, '0');
@@ -1904,9 +1889,27 @@
                         document.getElementById("popup-seconds").innerText = seconds.toString().padStart(2, '0');
                     }
 
-                    const headerCountdown = document.getElementById("header-countdown");
-                    if (headerCountdown) {
-                        headerCountdown.innerText = days + " Días " + hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0');
+                    // Main Banner Countdown
+                    const mainDays = document.getElementById("main-cd-days");
+                    if (mainDays) {
+                        mainDays.innerText = days.toString().padStart(2, '0');
+                        document.getElementById("main-cd-hours").innerText = hours.toString().padStart(2, '0');
+                        document.getElementById("main-cd-minutes").innerText = minutes.toString().padStart(2, '0');
+                        document.getElementById("main-cd-seconds").innerText = seconds.toString().padStart(2, '0');
+                    }
+                } else {
+                    // Si finaliza la oferta
+                    const mainContainer = document.getElementById("main-countdown-container");
+                    if (mainContainer) {
+                        mainContainer.innerHTML = '<div class="badge bg-danger fs-5 px-4 py-2 shadow">¡Oferta finalizada!</div>';
+                    }
+                    
+                    const elDays = document.getElementById("popup-days");
+                    if (elDays) {
+                        document.getElementById("popup-days").innerText = '00';
+                        document.getElementById("popup-hours").innerText = '00';
+                        document.getElementById("popup-minutes").innerText = '00';
+                        document.getElementById("popup-seconds").innerText = '00';
                     }
                 }
             }, 1000);
@@ -1924,6 +1927,11 @@
 
     <!-- SISTEMA LIVECHAT EN VIVO (TIDIO BOT) -->
     <script src="https://code.tidio.co/qwz8uzln70c56w5xlzz9kt7z5uvzmdnv.js" async></script>
+    <script>
+        document.addEventListener("tidioChat-ready", function () {
+            window.tidioChatApi.display(false); // Ocultar burbuja por defecto
+        });
+    </script>
 </body>
 
 </html>
