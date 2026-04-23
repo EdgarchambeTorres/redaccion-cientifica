@@ -1,1 +1,0 @@
-# redaccion-cientifica
