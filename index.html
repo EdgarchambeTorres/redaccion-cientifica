@@ -46,7 +46,8 @@
             --bw-cyan: #0062CC;
             --bw-gold: #0062CC;
             --bw-gold-light: #007BFF;
-            --bw-success: #198754; /* Verde Profesional Blackwell (Estilo Éxito/Hotmart) */
+            --bw-success: #198754;
+            /* Verde Profesional Blackwell (Estilo Éxito/Hotmart) */
 
             --font-heading: 'Libre Baskerville', serif;
             --font-body: 'Inter', sans-serif;
@@ -146,6 +147,26 @@
             transition: all 0.3s ease;
         }
 
+        @media (max-width: 991px) {
+            .academic-navbar .navbar {
+                flex-direction: column !important;
+                justify-content: center !important;
+            }
+
+            .academic-navbar .navbar-brand {
+                margin: 0 0 1rem 0 !important;
+            }
+
+            .academic-navbar .navbar-toggler {
+                margin-bottom: 0.5rem;
+            }
+
+            .academic-navbar .navbar-nav {
+                text-align: center;
+                margin-top: 1rem;
+            }
+        }
+
         .academic-navbar .navbar-brand img {
             height: 42px;
         }
@@ -177,6 +198,41 @@
 
         .academic-navbar .nav-link:hover::after {
             width: 100%;
+        }
+
+        /* Hero Stats Banner */
+        .hero-stats-banner {
+            display: flex;
+            gap: 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item h4 {
+            color: rgba(255, 255, 255, 0.7) !important;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.3rem;
+            font-family: var(--font-body);
+        }
+
+        .stat-item p {
+            color: var(--bw-white);
+            font-weight: 800;
+            font-size: 1.4rem;
+            margin: 0;
+            font-family: var(--font-heading);
+        }
+
+        @media (max-width: 767px) {
+            .hero-stats-banner {
+                gap: 1.5rem;
+                justify-content: center;
+            }
+
+            .stat-item p {
+                font-size: 1.1rem;
+            }
         }
 
         .btn-gold {
@@ -411,6 +467,7 @@
                 filter: blur(12px);
                 opacity: 0;
             }
+
             100% {
                 filter: blur(0px);
                 opacity: 1;
@@ -1166,12 +1223,13 @@
     <!-- Header -->
     <header class="academic-navbar">
         <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-dark p-0">
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
                 <a class="navbar-brand" href="#">
                     <img src="https://cdn.bitrix24.es/b15495391/landing/d83/d8337f03f6e3aaff5c6df748f7fc5593/logo_bgu_1x.png"
                         alt="Blackwell Global University">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#academicNav">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#academicNav"
+                    style="border: none;">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="academicNav">
@@ -1304,30 +1362,27 @@
                         <div class="carousel-item active" data-bs-interval="4000">
                             <img src="carousel_1.png" class="d-block w-100" alt="Investigación y Escritura Blackwell"
                                 style="height: 520px; object-fit: cover; object-position: center;">
-                            <div
-                                class="carousel-caption d-none d-md-block bg-navy bg-opacity-75 rounded-4 p-4 mb-4 mx-4 shadow-lg border-start border-4 border-gold">
-                                <h5 class="text-white fw-bold fs-4">Investigación de Alto Impacto</h5>
-                                <p class="text-white-50 mb-0">Domina las metodologías exigidas por las revistas Scopus y
-                                    Web of Science.</p>
+                            <div class="bg-navy p-4 text-center border-bottom border-4 border-gold">
+                                <h5 class="text-white fw-bold fs-5 mb-1">Metodología de Éxito</h5>
+                                <p class="text-white-50 small mb-0">Domina las metodologías exigidas por las revistas
+                                    Scopus y Web of Science.</p>
                             </div>
                         </div>
                         <div class="carousel-item" data-bs-interval="4000">
                             <img src="carousel_2.png" class="d-block w-100" alt="Excelencia Editorial Blackwell"
                                 style="height: 520px; object-fit: cover; object-position: center;">
-                            <div
-                                class="carousel-caption d-none d-md-block bg-navy bg-opacity-75 rounded-4 p-4 mb-4 mx-4 shadow-lg border-start border-4 border-gold">
-                                <h5 class="text-white fw-bold fs-4">Excelencia Científica</h5>
-                                <p class="text-white-50 mb-0">Estructuras precisas para asegurar la aceptación editorial
-                                    internacional.</p>
+                            <div class="bg-navy p-4 text-center border-bottom border-4 border-gold">
+                                <h5 class="text-white fw-bold fs-5 mb-1">Excelencia Científica</h5>
+                                <p class="text-white-50 small mb-0">Estructuras precisas para asegurar la aceptación
+                                    editorial internacional.</p>
                             </div>
                         </div>
                         <div class="carousel-item" data-bs-interval="4000">
                             <img src="carousel_3.png" class="d-block w-100" alt="Comunidad Académica Blackwell"
                                 style="height: 520px; object-fit: cover; object-position: center;">
-                            <div
-                                class="carousel-caption d-none d-md-block bg-navy bg-opacity-75 rounded-4 p-4 mb-4 mx-4 shadow-lg border-start border-4 border-gold">
-                                <h5 class="text-white fw-bold fs-4">Proyección Global</h5>
-                                <p class="text-white-50 mb-0">Transforma tu conocimiento en un referente académico
+                            <div class="bg-navy p-4 text-center border-bottom border-4 border-gold">
+                                <h5 class="text-white fw-bold fs-5 mb-1">Proyección Global</h5>
+                                <p class="text-white-50 small mb-0">Transforma tu conocimiento en un referente académico
                                     validado mundialmente.</p>
                             </div>
                         </div>
@@ -1793,9 +1848,9 @@
                             </ul>
                         </div>
 
-                        <!-- TRUST BADGES (SUGGESTION 5) -->
+                        <!-- TRUST BADGES (Sin líneas verticales) -->
                         <div class="d-flex justify-content-center gap-4 mb-4 flex-wrap pb-3">
-                            <div class="text-center px-lg-4 border-start border-end">
+                            <div class="text-center px-lg-4">
                                 <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex p-3 mb-2">
                                     <i class="bi bi-award fs-3 text-primary"></i>
                                 </div>
@@ -1912,7 +1967,8 @@
                             <div class="col-md-12">
                                 <label class="form-label-bgu">Número de Teléfono</label>
                                 <div class="input-group">
-                                    <select class="form-select country-code-select" name="pais_codigo">
+                                    <select class="form-select country-code-select" name="pais_codigo"
+                                        style="max-width: 110px; flex: 0 0 110px;">
                                         <option value="+51" selected>🇵🇪 +51</option>
                                         <option value="+52">🇲🇽 +52</option>
                                         <option value="+57">🇨🇴 +57</option>
@@ -1924,12 +1980,13 @@
                                         <option value="+34">🇪🇸 +34</option>
                                     </select>
                                     <input type="tel" class="form-control-bgu phone-input-bgu" name="celular"
-                                        placeholder="999 888 777" required>
+                                        placeholder="999 888 777" required
+                                        style="border-radius: 0 8px 8px 0 !important;">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <label class="form-label-bgu">País de Residencia</label>
-                                <select class="form-select form-control-bgu" name="pais" required>
+                                <select class="form-select form-control-bgu" name="pais" id="paisSelect" required>
                                     <option value="" disabled selected>Selecciona tu país</option>
                                     <option value="Perú">Perú</option>
                                     <option value="México">México</option>
@@ -1940,6 +1997,11 @@
                                     <option value="Bolivia">Bolivia</option>
                                     <option value="Otro">Otro país</option>
                                 </select>
+                            </div>
+                            <div class="col-md-12 d-none" id="otroPaisContainer">
+                                <label class="form-label-bgu">Especificar País</label>
+                                <input type="text" class="form-control-bgu" id="otroPaisInput"
+                                    placeholder="Escribe tu país">
                             </div>
                             <div class="col-md-12">
                                 <label class="form-label-bgu">Comentarios (Opcional)</label>
@@ -1972,12 +2034,18 @@
             btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Enviando...';
             btn.disabled = true;
 
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzhkrUga85Ie60PpB8AdsFxKmeB34JoQkV3ekKzUxqMYBjP2fNwSM94C2V__naWhkxD/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzx6GLx7LZfgaZe9kexfXGxGaXr5kavmUVZzPPlqNRiHUDpb1eNwWz9rZemHLZF500_/exec';
 
             // Combinar código de país y número para el envío
             const formData = new FormData(this);
             const fullPhone = formData.get('pais_codigo') + " " + formData.get('celular');
             formData.set('celular', fullPhone);
+
+            // Manejo de "Otro" país
+            if (formData.get('pais') === 'Otro') {
+                const otroPais = document.getElementById('otroPaisInput').value;
+                if (otroPais) formData.set('pais', otroPais);
+            }
 
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
@@ -1996,6 +2064,19 @@
                     btn.innerHTML = originalText;
                     btn.disabled = false;
                 });
+        });
+
+        // Lógica para mostrar campo "Otro" país
+        document.getElementById('paisSelect').addEventListener('change', function () {
+            const container = document.getElementById('otroPaisContainer');
+            const input = document.getElementById('otroPaisInput');
+            if (this.value === 'Otro') {
+                container.classList.remove('d-none');
+                input.required = true;
+            } else {
+                container.classList.add('d-none');
+                input.required = false;
+            }
         });
     </script>
 
