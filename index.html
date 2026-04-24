@@ -736,8 +736,6 @@
         .academic-accordion .accordion-button:focus {
             box-shadow: none;
             border-color: rgba(0, 0, 0, 0.1);
-            background-color: var(--bw-navy);
-            color: var(--bw-white) !important;
         }
 
         .academic-accordion .accordion-button h5 {
@@ -754,6 +752,18 @@
         .academic-accordion .accordion-button:not(.collapsed) small,
         .academic-accordion .accordion-button:not(.collapsed) i {
             color: var(--bw-white) !important;
+        }
+
+        /* Corrección de color al cerrar/focus */
+        .academic-accordion .accordion-button.collapsed h5,
+        .academic-accordion .accordion-button.collapsed small,
+        .academic-accordion .accordion-button.collapsed i {
+            color: var(--bw-navy) !important;
+        }
+
+        .academic-accordion .accordion-button:focus:not(:not(.collapsed)) {
+            background-color: var(--bw-white);
+            color: var(--bw-navy) !important;
         }
 
         .academic-accordion .accordion-body {
@@ -1926,98 +1936,159 @@
                 </div>
             </div>
         </div>
-        </div>
     </section>
 
-    <!-- CONTACT SECTION (Diseño Ficha de Registro BGU) -->
+    <!-- REGISTRO Y FAQ (Lado a Lado) -->
     <section id="contacto" class="section-padding bg-light">
         <div class="container">
-            <div class="registration-card reveal">
-                <!-- Lado Izquierdo: Branding -->
-                <div class="registration-left">
-                    <img src="https://cdn.bitrix24.es/b15495391/landing/d83/d8337f03f6e3aaff5c6df748f7fc5593/logo_bgu_1x.png"
-                        alt="Blackwell Logo">
-                    <h2 class="text-white mb-3" style="font-family: var(--font-heading);">Habla con un Asesor</h2>
-                    <p class="text-white-50 fs-6">
-                        Solicita información detallada sobre el programa de Redacción de Artículos Científicos y
-                        potencia tu perfil académico e investigador.
-                    </p>
-                </div>
-
-                <!-- Lado Derecho: Formulario -->
-                <div class="registration-right">
-                    <h3>¿Tienes Preguntas?</h3>
-                    <form id="registroForm">
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <label class="form-label-bgu">Nombres</label>
-                                <input type="text" class="form-control-bgu" name="nombres" required
-                                    placeholder="Ej. Juan">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label-bgu">Apellidos</label>
-                                <input type="text" class="form-control-bgu" name="apellidos" required
-                                    placeholder="Ej. Pérez">
-                            </div>
-                            <div class="col-md-12">
-                                <label class="form-label-bgu">Correo electrónico</label>
-                                <input type="email" class="form-control-bgu" name="correo" required
-                                    placeholder="tu@email.com">
-                            </div>
-                            <div class="col-md-12">
-                                <label class="form-label-bgu">Número de Teléfono</label>
-                                <div class="input-group">
-                                    <select class="form-select country-code-select" name="pais_codigo"
-                                        style="max-width: 110px; flex: 0 0 110px;">
-                                        <option value="+51" selected>🇵🇪 +51</option>
-                                        <option value="+52">🇲🇽 +52</option>
-                                        <option value="+57">🇨🇴 +57</option>
-                                        <option value="+54">🇦🇷 +54</option>
-                                        <option value="+56">🇨🇱 +56</option>
-                                        <option value="+591">🇧🇴 +591</option>
-                                        <option value="+593">🇪🇨 +593</option>
-                                        <option value="+1">🇺🇸 +1</option>
-                                        <option value="+34">🇪🇸 +34</option>
+            <div class="row g-5">
+                <!-- Columna Izquierda: Formulario -->
+                <div class="col-lg-6">
+                    <div class="bg-white p-4 p-md-5 rounded-4 shadow-sm border-top border-4 border-gold">
+                        <div class="mb-4">
+                            <h3 class="fw-bold text-navy" style="font-family: var(--font-heading);">¿Tienes Preguntas?
+                            </h3>
+                            <p class="text-muted small">Déjanos tus datos y te contactaremos.</p>
+                        </div>
+                        <form id="registroForm">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label-bgu">Nombres</label>
+                                    <input type="text" class="form-control-bgu" name="nombres" required
+                                        placeholder="Ej. Juan">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label-bgu">Apellidos</label>
+                                    <input type="text" class="form-control-bgu" name="apellidos" required
+                                        placeholder="Ej. Pérez">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label-bgu">Correo electrónico</label>
+                                    <input type="email" class="form-control-bgu" name="correo" required
+                                        placeholder="tu@email.com">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label-bgu">Número de Teléfono</label>
+                                    <div class="input-group">
+                                        <select class="form-select country-code-select" name="pais_codigo"
+                                            style="max-width: 110px; flex: 0 0 110px;">
+                                            <option value="+51" selected>🇵🇪 +51</option>
+                                            <option value="+52">🇲🇽 +52</option>
+                                            <option value="+57">🇨🇴 +57</option>
+                                            <option value="+54">🇦🇷 +54</option>
+                                            <option value="+56">🇨🇱 +56</option>
+                                            <option value="+591">🇧🇴 +591</option>
+                                            <option value="+593">🇪🇨 +593</option>
+                                            <option value="+1">🇺🇸 +1</option>
+                                            <option value="+34">🇪🇸 +34</option>
+                                        </select>
+                                        <input type="tel" class="form-control-bgu phone-input-bgu" name="celular"
+                                            placeholder="999 888 777" required
+                                            style="border-radius: 0 8px 8px 0 !important;">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label-bgu">País de Residencia</label>
+                                    <select class="form-select form-control-bgu" name="pais" id="paisSelect" required>
+                                        <option value="" disabled selected>Selecciona tu país</option>
+                                        <option value="Perú">Perú</option>
+                                        <option value="México">México</option>
+                                        <option value="Colombia">Colombia</option>
+                                        <option value="Chile">Chile</option>
+                                        <option value="Argentina">Argentina</option>
+                                        <option value="Ecuador">Ecuador</option>
+                                        <option value="Bolivia">Bolivia</option>
+                                        <option value="Otro">Otro país</option>
                                     </select>
-                                    <input type="tel" class="form-control-bgu phone-input-bgu" name="celular"
-                                        placeholder="999 888 777" required
-                                        style="border-radius: 0 8px 8px 0 !important;">
+                                </div>
+                                <div class="col-md-12 d-none" id="otroPaisContainer">
+                                    <label class="form-label-bgu">Especificar País</label>
+                                    <input type="text" class="form-control-bgu" id="otroPaisInput"
+                                        placeholder="Escribe tu país">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label-bgu">Comentarios (Opcional)</label>
+                                    <textarea class="form-control-bgu" name="comentarios" rows="2"
+                                        placeholder="¿Tienes alguna duda específica?"></textarea>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn-bgu-primary py-3 fs-5 shadow-sm w-100">
+                                        Finalizar Registro
+                                    </button>
+                                </div>
+                                <div class="col-12 text-center mt-3">
+                                    <div id="formAlert" class="alert d-none small mb-0 p-2" role="alert"></div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <label class="form-label-bgu">País de Residencia</label>
-                                <select class="form-select form-control-bgu" name="pais" id="paisSelect" required>
-                                    <option value="" disabled selected>Selecciona tu país</option>
-                                    <option value="Perú">Perú</option>
-                                    <option value="México">México</option>
-                                    <option value="Colombia">Colombia</option>
-                                    <option value="Chile">Chile</option>
-                                    <option value="Argentina">Argentina</option>
-                                    <option value="Ecuador">Ecuador</option>
-                                    <option value="Bolivia">Bolivia</option>
-                                    <option value="Otro">Otro país</option>
-                                </select>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: FAQ -->
+                <div class="col-lg-6">
+                    <div class="ps-lg-4">
+                        <div class="mb-4">
+                            <h2 class="fw-bold text-navy" style="font-family: var(--font-heading);">Preguntas Frecuentes
+                            </h2>
+                            <p class="text-muted">Despeja tus dudas finales antes de inscribirte.</p>
+                        </div>
+                        <div class="accordion academic-accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faqOne">
+                                        ¿Cómo accedo al descuento del 40%?
+                                    </button>
+                                </h2>
+                                <div id="faqOne" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Al registrarte, recibirás un correo automático con tu cupón
+                                        <strong>QUIERO_MI_CURSO_AHORA</strong> para canjearlo en Hotmart.
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-12 d-none" id="otroPaisContainer">
-                                <label class="form-label-bgu">Especificar País</label>
-                                <input type="text" class="form-control-bgu" id="otroPaisInput"
-                                    placeholder="Escribe tu país">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faqTwo">
+                                        ¿Cómo funciona la Garantía de 7 Días?
+                                    </button>
+                                </h2>
+                                <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Si el curso no cumple tus expectativas, Hotmart te devuelve el 100% de tu dinero
+                                        dentro de los primeros 7 días, sin preguntas.
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-12">
-                                <label class="form-label-bgu">Comentarios (Opcional)</label>
-                                <textarea class="form-control-bgu" name="comentarios" rows="2"
-                                    placeholder="¿Tienes alguna duda específica?"></textarea>
-                            </div>
-                            <div class="col-12 mt-4">
-                                <button type="submit" class="btn-bgu-primary py-3 fs-5 shadow-sm">
-                                    Finalizar Registro
-                                </button>
-                            </div>
-                            <div class="col-12 text-center mt-3">
-                                <div id="formAlert" class="alert d-none small mb-0 p-2" role="alert"></div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faqThree">
+                                        ¿El acceso al contenido es para siempre?
+                                    </button>
+                                </h2>
+                                <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Sí, una vez inscrito tendrás acceso de por vida a las clases, materiales y
+                                        futuras actualizaciones del programa.
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </form>
+
+                        <!-- Badge de Confianza -->
+                        <div class="mt-5 p-4 rounded-4 bg-white shadow-sm border-start border-4 border-success">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-shield-lock-fill fs-1 text-success me-3"></i>
+                                <div>
+                                    <h6 class="fw-bold text-navy mb-1">Pago 100% Seguro</h6>
+                                    <p class="small text-muted mb-0">Tus datos están protegidos por la tecnología de
+                                        encriptación de Hotmart.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2034,7 +2105,7 @@
             btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Enviando...';
             btn.disabled = true;
 
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzxJMCpL8N0XGt56F9WluewFGIvxAfiP6DD_e1gDQKOOi3idLx1tGADvo-jsHqbKlhm/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwBgGQ0bY5vuGZ1G91WYd-FR5VSUsf7S9_9ayEvGXrItrWhUyBsxG9qGDzTflGkZcRr/exec';
 
             // Combinar código de país y número para el envío
             const formData = new FormData(this);
@@ -2079,73 +2150,6 @@
             }
         });
     </script>
-
-    <!-- FAQ (bg-light-alt) -->
-    <section id="faq" class="section-padding bg-light-alt">
-        <div class="container">
-            <div class="row justify-content-center text-center mb-5">
-                <div class="col-lg-8">
-                    <h2 class="section-title text-center">Preguntas Frecuentes</h2>
-                    <p class="mt-4 text-muted fs-5">Resuelve cualquier duda final antes de aprovechar nuestro descuento.
-                    </p>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="accordion academic-accordion shadow-sm" id="faqAccordion">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="faqOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#c_faqOne">
-                                    ¿Para quién está dirigido estrictamente el curso?
-                                </button>
-                            </h2>
-                            <div id="c_faqOne" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Para docentes universitarios, investigadores en formación o nivel intermedio, e
-                                    incluso estudiantes de doctorado/maestría que sienten frustración ante el folio en
-                                    blanco y necesitan convertir rápidamente su investigación cruda en un <b>manuscrito
-                                        publicable e indexado</b>.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="faqTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#c_faqTwo">
-                                    ¿Cómo funciona la Garantía Libre de Riesgos (7 Días)?
-                                </button>
-                            </h2>
-                            <div id="c_faqTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Estás protegido por las Políticas de Reembolso de Hotmart. Tienes 7 días completos
-                                    para explorar el contenido del Módulo 1 y los Bonos. Si crees que el nivel no es
-                                    para ti, presionas un botón en tu panel y Hotmart reintegra el 100% de tu dinero a
-                                    tu tarjeta, sin preguntas burocráticas comerciales.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="faqThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#c_faqThree">
-                                    ¿Cómo accederé al producto al pagar?
-                                </button>
-                            </h2>
-                            <div id="c_faqThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    El acceso es automático e inmediato. Una vez se confirme tu pago local o con
-                                    tarjeta, Hotmart te enviará a tu correo proporcionado el acceso directo al área de
-                                    miembros (Club) donde tus clases en video HD y materiales en PDF te estarán
-                                    esperando.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="university-footer text-center text-sm-start">
