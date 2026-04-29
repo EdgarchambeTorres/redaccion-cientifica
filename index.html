@@ -22,8 +22,16 @@
         href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
+    <!-- intl-tel-input CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+
     <!-- Styles -->
     <style>
+        .iti {
+            width: 100%;
+        }
+
+        /* Ajuste intl-tel-input */
         :root {
             /* Blackwell Brand Colors Oficiales (Basado en nuevo diseño BGU) */
             --bw-navy: #0062CC;
@@ -1249,7 +1257,7 @@
                         <li class="nav-item"><a class="nav-link" href="#bonos">Bonos</a></li>
                         <li class="nav-item"><a class="nav-link" href="#inversion">Inversión</a></li>
                         <li class="nav-item ms-lg-2">
-                            <a href="#inversion" class="btn-gold shadow-sm">Aplicar Ahora</a>
+                            <a href="#contacto" class="btn-gold shadow-sm">Contactanos</a>
                         </li>
                     </ul>
                 </div>
@@ -1290,8 +1298,8 @@
                     </div>
 
                     <div class="d-flex gap-3 flex-wrap align-items-center mt-4">
-                        <a href="#inversion" class="btn-gold px-4 py-3 fw-bold fs-5 shadow-sm"><i
-                                class="bi bi-cart3 me-2"></i> Inscribirme al Curso</a>
+                        <a href="#contacto" class="btn-gold px-4 py-3 fw-bold fs-5 shadow-sm"><i
+                                class="bi bi-gift-fill me-2"></i> Reclamar Descuento del 40%</a>
                         <a href="#modulos" class="btn btn-outline-light px-4 py-3 fw-bold fs-5 shadow-sm"
                             style="border: 2px solid white;">Ver Temario</a>
                     </div>
@@ -1886,8 +1894,7 @@
                             <button type="button" class="btn-gold py-3 fs-4 shadow-lg text-uppercase btn-lg btn-pulse"
                                 style="border-radius: 8px; width: 100%; border: none;" data-bs-toggle="collapse"
                                 data-bs-target="#couponRevealBox" aria-expanded="false" aria-controls="couponRevealBox">
-                                <i class="bi bi-cart-check me-2"></i> Quiero Inscribirme
-                                Ahora
+                                <i class="bi bi-gift-fill me-2"></i> Quiero mi Descuento de Promoción
                             </button>
 
                             <!-- Caja del Cupón Oculta (Diseño adaptado) -->
@@ -1968,24 +1975,21 @@
                                         placeholder="tu@email.com">
                                 </div>
                                 <div class="col-md-12">
-                                    <label class="form-label-bgu">Número de Teléfono</label>
+                                    <label class="form-label-bgu">Número de WhatsApp</label>
                                     <div class="input-group">
-                                        <select class="form-select country-code-select" name="pais_codigo"
-                                            style="max-width: 110px; flex: 0 0 110px;">
-                                            <option value="+51" selected>🇵🇪 +51</option>
-                                            <option value="+52">🇲🇽 +52</option>
-                                            <option value="+57">🇨🇴 +57</option>
-                                            <option value="+54">🇦🇷 +54</option>
-                                            <option value="+56">🇨🇱 +56</option>
-                                            <option value="+591">🇧🇴 +591</option>
-                                            <option value="+593">🇪🇨 +593</option>
-                                            <option value="+1">🇺🇸 +1</option>
-                                            <option value="+34">🇪🇸 +34</option>
-                                        </select>
-                                        <input type="tel" class="form-control-bgu phone-input-bgu" name="celular"
-                                            placeholder="999 888 777" required
-                                            style="border-radius: 0 8px 8px 0 !important;">
+                                        <input type="tel" class="form-control-bgu phone-input-bgu" id="telefono"
+                                            required style="border-radius: 8px !important; width: 100%;">
+                                        <input type="hidden" name="celular" id="celular_hidden">
                                     </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label-bgu">¿Cuál es tu objetivo?</label>
+                                    <select class="form-select form-control-bgu" name="objetivo" id="objetivoSelect"
+                                        required>
+                                        <option value="estudiante" selected>Quiero el 40% de descuento en el curso
+                                        </option>
+                                        <option value="afiliado">Quiero ser Embajador/Afiliado (Ganar Comisión)</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-12">
                                     <label class="form-label-bgu">País de Residencia</label>
@@ -2094,23 +2098,36 @@
         </div>
     </section>
 
-    <!-- Script de Envío a Google Sheets -->
+    <!-- intl-tel-input JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script>
+        // Inicializar intl-tel-input
+        const phoneInputField = document.querySelector("#telefono");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            preferredCountries: ["pe", "mx", "co", "ar", "cl", "ec"],
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+
         document.getElementById('registroForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const btn = this.querySelector('button[type="submit"]');
             const alertBox = document.getElementById('formAlert');
             const originalText = btn.innerHTML;
 
+            // Validar teléfono
+            if (!phoneInput.isValidNumber()) {
+                alert("Por favor ingrese un número de teléfono válido con el código de país correcto.");
+                return;
+            }
+
             btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Enviando...';
             btn.disabled = true;
 
             const scriptURL = 'https://script.google.com/macros/s/AKfycbwBgGQ0bY5vuGZ1G91WYd-FR5VSUsf7S9_9ayEvGXrItrWhUyBsxG9qGDzTflGkZcRr/exec';
 
-            // Combinar código de país y número para el envío
+            // Guardar número completo internacionalizado
+            document.getElementById('celular_hidden').value = phoneInput.getNumber();
             const formData = new FormData(this);
-            const fullPhone = formData.get('pais_codigo') + " " + formData.get('celular');
-            formData.set('celular', fullPhone);
 
             // Manejo de "Otro" país
             if (formData.get('pais') === 'Otro') {
@@ -2121,10 +2138,21 @@
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
                     alertBox.className = 'alert alert-success small mb-0 p-2';
-                    alertBox.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i> ¡Registro completado! Un asesor te contactará pronto.';
+                    alertBox.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i> ¡Registro exitoso! Redirigiendo...';
                     alertBox.classList.remove('d-none');
-                    this.reset();
-                    setTimeout(() => alertBox.classList.add('d-none'), 8000);
+
+                    const objetivo = document.getElementById('objetivoSelect').value;
+
+                    // Redirección inteligente tras el éxito
+                    setTimeout(() => {
+                        if (objetivo === 'estudiante') {
+                            // Enlace directo al checkout con descuento
+                            window.location.href = "https://pay.hotmart.com/Q99622319J?off=10x647il";
+                        } else {
+                            // Enlace a tu bot de Telegram o WhatsApp para afiliados
+                            window.location.href = "https://t.me/BlackwellUniversityBot"; // Cambia este link por el real
+                        }
+                    }, 2000);
                 })
                 .catch(error => {
                     alertBox.className = 'alert alert-danger small mb-0 p-2';
@@ -2150,6 +2178,28 @@
             }
         });
     </script>
+
+    <!-- Sección Afiliados (Lead Generation) -->
+    <section class="section-padding bg-navy text-white text-center" style="background-color: var(--bw-navy-dark);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <span class="badge bg-gold text-white px-3 py-2 mb-3 fs-6 rounded-pill shadow-sm">OPORTUNIDAD DE
+                        NEGOCIO</span>
+                    <h2 class="section-title text-white display-5 fw-bold mb-3">¿Quieres ser Embajador de Blackwell?
+                    </h2>
+                    <p class="fs-5 mb-4 opacity-75">Únete a nuestro programa de afiliados y gana hasta un <strong>50% de
+                            comisión</strong> por cada estudiante que invites a nuestros programas académicos de élite.
+                    </p>
+                    <a href="#contacto"
+                        class="btn-gold py-3 px-5 fs-4 shadow-lg text-uppercase btn-lg btn-pulse d-inline-block text-decoration-none rounded-pill"
+                        onclick="document.getElementById('objetivoSelect').value='afiliado';">
+                        <i class="bi bi-rocket-takeoff-fill me-2"></i> Quiero Ser Afiliado
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="university-footer text-center text-sm-start">
