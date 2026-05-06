@@ -2137,32 +2137,35 @@
 
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
+                    // 1. Mostrar mensaje de éxito
                     alertBox.className = 'alert alert-success small mb-0 p-2';
-                    alertBox.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i> ¡Registro exitoso! Redirigiendo...';
+                    alertBox.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i> ¡Registro exitoso! Ya puedes continuar.';
                     alertBox.classList.remove('d-none');
 
                     const objetivo = document.getElementById('objetivoSelect').value;
+                    const nombre = formData.get('nombre') || 'Usuario';
+                    const nombreLimpio = nombre.trim().replace(/\s/g, '_');
 
-                    // Redirección inteligente tras el éxito en nueva pestaña
-                    setTimeout(() => {
-                        const nombre = formData.get('nombre') || 'Usuario';
-                        const nombreLimpio = nombre.trim().replace(/\s/g, '_');
-
-                        if (objetivo === 'estudiante') {
-                            // Enlace directo al checkout con descuento en nueva pestaña
+                    // 2. Transformar el botón para redirección manual (evita bloqueo de popups)
+                    btn.disabled = false;
+                    btn.className = "btn btn-success w-100 py-3 fw-bold shadow-sm mt-3 animate__animated animate__pulse animate__infinite";
+                    
+                    if (objetivo === 'estudiante') {
+                        btn.innerHTML = '🚀 IR AL PAGO CON DESCUENTO';
+                        btn.onclick = function() {
                             window.open("https://pay.hotmart.com/Q99622319J?off=10x647il", "_blank");
-                        } else {
-                            // Enlace al bot de Telegram con parámetro de inicio personalizado en nueva pestaña
-                            window.open(`https://t.me/@BlackwellGlobal_Bot?start=afiliado_${nombreLimpio}`, "_blank");
-                        }
-                    }, 2000);
+                        };
+                    } else {
+                        btn.innerHTML = '🤖 ABRIR MI BOT DE AFILIADO';
+                        btn.onclick = function() {
+                            window.open(`https://t.me/BlackwellGlobal_Bot?start=afiliado_${nombreLimpio}`, "_blank");
+                        };
+                    }
                 })
                 .catch(error => {
                     alertBox.className = 'alert alert-danger small mb-0 p-2';
                     alertBox.innerHTML = '<i class="bi bi-exclamation-triangle-fill me-1"></i> Error al conectar. Intenta de nuevo.';
                     alertBox.classList.remove('d-none');
-                })
-                .finally(() => {
                     btn.innerHTML = originalText;
                     btn.disabled = false;
                 });
