@@ -1646,8 +1646,8 @@
         </div>
     </section>
 
-    <!-- Conoce a Nuestros Docentes (bg-white) -->
-    <section id="docentes" class="section-padding bg-white">
+    <!-- Conoce a Nuestros Docentes (bg-light-alt) -->
+    <section id="docentes" class="section-padding bg-light-alt">
         <div class="container">
             <div class="row mb-5 justify-content-center text-center">
                 <div class="col-lg-8">
@@ -1731,8 +1731,8 @@
         </div>
     </section>
 
-    <!-- Historias de Éxito / Testimonios (bg-light-alt) -->
-    <section id="experiencia" class="section-padding bg-light-alt">
+    <!-- Historias de Éxito / Testimonios (bg-white) -->
+    <section id="experiencia" class="section-padding bg-white">
         <div class="container">
             <div class="row justify-content-center text-center mb-5">
                 <div class="col-lg-8">
@@ -1812,8 +1812,8 @@
         </div>
     </section>
 
-    <!-- Inversión (TRUST BADGES ENHANCED - bg-white) -->
-    <section id="inversion" class="section-padding bg-white">
+    <!-- Inversión (TRUST BADGES ENHANCED - bg-light-alt) -->
+    <section id="inversion" class="section-padding bg-light-alt">
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-6 text-center text-lg-start reveal-left">
@@ -1945,8 +1945,8 @@
         </div>
     </section>
 
-    <!-- REGISTRO Y FAQ (Lado a Lado) -->
-    <section id="contacto" class="section-padding bg-light">
+    <!-- REGISTRO Y FAQ (Lado a Lado) - bg-white -->
+    <section id="contacto" class="section-padding bg-white">
         <div class="container">
             <div class="row g-5">
                 <!-- Columna Izquierda: Formulario -->
@@ -2123,7 +2123,7 @@
             btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Enviando...';
             btn.disabled = true;
 
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbwBgGQ0bY5vuGZ1G91WYd-FR5VSUsf7S9_9ayEvGXrItrWhUyBsxG9qGDzTflGkZcRr/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxT7TYAPcmSHPFrrzFJ5CSBT1z4DG_Uzql1Xd81m3bQ_trF-gnCAO5uHjI4-hCVfx-4/exec';
 
             // Guardar número completo internacionalizado
             document.getElementById('celular_hidden').value = phoneInput.getNumber();
@@ -2143,14 +2143,17 @@
 
                     const objetivo = document.getElementById('objetivoSelect').value;
 
-                    // Redirección inteligente tras el éxito
+                    // Redirección inteligente tras el éxito en nueva pestaña
                     setTimeout(() => {
+                        const nombre = formData.get('nombre') || 'Usuario';
+                        const nombreLimpio = nombre.trim().replace(/\s/g, '_');
+
                         if (objetivo === 'estudiante') {
-                            // Enlace directo al checkout con descuento
-                            window.location.href = "https://pay.hotmart.com/Q99622319J?off=10x647il";
+                            // Enlace directo al checkout con descuento en nueva pestaña
+                            window.open("https://pay.hotmart.com/Q99622319J?off=10x647il", "_blank");
                         } else {
-                            // Enlace a tu bot de Telegram o WhatsApp para afiliados
-                            window.location.href = "https://t.me/BlackwellUniversityBot"; // Cambia este link por el real
+                            // Enlace al bot de Telegram con parámetro de inicio personalizado en nueva pestaña
+                            window.open(`https://t.me/BlackwellUniversityBot?start=afiliado_${nombreLimpio}`, "_blank");
                         }
                     }, 2000);
                 })
