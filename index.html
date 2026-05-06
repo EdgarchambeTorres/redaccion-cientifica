@@ -2123,7 +2123,7 @@
             btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Enviando...';
             btn.disabled = true;
 
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbwuV8VkdlB6JDK_YHfhZr2jwxQDDH7hj216Ia5RO0bXAMJzcaXlCeECD2dBVi66j67a/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbznV7nWBLZiS8fYsCQPs2PjTv_ZBU0dWImBZeIKgGvcwGNJs2vQlkCss275emK2Gl8/exec';
 
             // Guardar número completo internacionalizado
             document.getElementById('celular_hidden').value = phoneInput.getNumber();
@@ -2135,37 +2135,33 @@
                 if (otroPais) formData.set('pais', otroPais);
             }
 
+            // 1. Abrimos una pestaña en blanco inmediatamente (evita bloqueo de popups)
+            const nuevaPestana = window.open("about:blank", "_blank");
+
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
-                    // 1. Mostrar mensaje de éxito
                     alertBox.className = 'alert alert-success small mb-0 p-2';
-                    alertBox.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i> ¡Registro exitoso! Ya puedes continuar.';
+                    alertBox.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i> ¡Registro exitoso! Redirigiendo...';
                     alertBox.classList.remove('d-none');
 
                     const objetivo = document.getElementById('objetivoSelect').value;
                     const nombre = formData.get('nombre') || 'Usuario';
                     const nombreLimpio = nombre.trim().replace(/\s/g, '_');
 
-                    // 2. Transformar el botón para redirección manual (evita bloqueo de popups)
-                    btn.disabled = false;
-                    btn.className = "btn btn-success w-100 py-3 fw-bold shadow-sm mt-3 animate__animated animate__pulse animate__infinite";
-
+                    // 2. Redirigimos la pestaña abierta al destino final
                     if (objetivo === 'estudiante') {
-                        btn.innerHTML = '🚀 IR AL PAGO CON DESCUENTO';
-                        btn.onclick = function () {
-                            window.open("https://pay.hotmart.com/Q99622319J?off=10x647il", "_blank");
-                        };
+                        nuevaPestana.location.href = "https://pay.hotmart.com/Q99622319J?off=10x647il";
                     } else {
-                        btn.innerHTML = '🤖 ABRIR MI BOT DE AFILIADO';
-                        btn.onclick = function () {
-                            window.open(`https://t.me/BlackwellGlobal_Bot?start=afiliado_${nombreLimpio}`, "_blank");
-                        };
+                        nuevaPestana.location.href = `https://t.me/BlackwellGlobal_Bot?start=afiliado_${nombreLimpio}`;
                     }
                 })
                 .catch(error => {
+                    if (nuevaPestana) nuevaPestana.close();
                     alertBox.className = 'alert alert-danger small mb-0 p-2';
                     alertBox.innerHTML = '<i class="bi bi-exclamation-triangle-fill me-1"></i> Error al conectar. Intenta de nuevo.';
                     alertBox.classList.remove('d-none');
+                })
+                .finally(() => {
                     btn.innerHTML = originalText;
                     btn.disabled = false;
                 });
