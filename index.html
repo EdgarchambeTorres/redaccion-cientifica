@@ -2123,7 +2123,7 @@
             btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Enviando...';
             btn.disabled = true;
 
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxT7TYAPcmSHPFrrzFJ5CSBT1z4DG_Uzql1Xd81m3bQ_trF-gnCAO5uHjI4-hCVfx-4/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwuV8VkdlB6JDK_YHfhZr2jwxQDDH7hj216Ia5RO0bXAMJzcaXlCeECD2dBVi66j67a/exec';
 
             // Guardar número completo internacionalizado
             document.getElementById('celular_hidden').value = phoneInput.getNumber();
@@ -2149,15 +2149,15 @@
                     // 2. Transformar el botón para redirección manual (evita bloqueo de popups)
                     btn.disabled = false;
                     btn.className = "btn btn-success w-100 py-3 fw-bold shadow-sm mt-3 animate__animated animate__pulse animate__infinite";
-                    
+
                     if (objetivo === 'estudiante') {
                         btn.innerHTML = '🚀 IR AL PAGO CON DESCUENTO';
-                        btn.onclick = function() {
+                        btn.onclick = function () {
                             window.open("https://pay.hotmart.com/Q99622319J?off=10x647il", "_blank");
                         };
                     } else {
                         btn.innerHTML = '🤖 ABRIR MI BOT DE AFILIADO';
-                        btn.onclick = function() {
+                        btn.onclick = function () {
                             window.open(`https://t.me/BlackwellGlobal_Bot?start=afiliado_${nombreLimpio}`, "_blank");
                         };
                     }
