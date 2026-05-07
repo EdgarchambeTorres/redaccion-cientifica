@@ -2123,7 +2123,7 @@
             btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Enviando...';
             btn.disabled = true;
 
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzA-YCDb7qFcOg6FkmJD7KijflyEURQwh_Rj3m4uCnMF4JbJTcUsE2UBvrRS_jUZapk/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbylPL6Z_XrVfSp64HyFEItJGbmD_R8fDZoy4aIojzhm0VROU90fqVI4SaBv1gd2oD7Z/exec';
 
             // Guardar número completo internacionalizado
             document.getElementById('celular_hidden').value = phoneInput.getNumber();
@@ -2139,21 +2139,23 @@
             const nuevaPestana = window.open("about:blank", "_blank");
 
             fetch(scriptURL, { method: 'POST', body: formData })
-                .then(response => {
+                .then(response => response.json()) // Parseamos la respuesta a JSON
+                .then(data => {
                     alertBox.className = 'alert alert-success small mb-0 p-2';
                     alertBox.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i> ¡Registro exitoso! Redirigiendo...';
                     alertBox.classList.remove('d-none');
 
                     const objetivo = document.getElementById('objetivoSelect').value;
-                    const nombre = formData.get('nombre') || 'Usuario';
-                    const nombreLimpio = nombre.trim().replace(/\s/g, '_');
+
+                    // Usamos el ID generado por el script para el seguimiento
+                    const idGenerado = data.id_generado || "nuevo_lead";
 
                     // 2. Redirigimos la pestaña abierta al destino final
                     if (objetivo === 'estudiante') {
                         nuevaPestana.location.href = "https://pay.hotmart.com/Q99622319J?off=10x647il";
                     } else {
-                        // Redirección directa a la comunidad de afiliados
-                        nuevaPestana.location.href = "https://t.me/AfiliadosHotmartBGU/1";
+                        // Redirección al Bot de Telegram con el ID único
+                        nuevaPestana.location.href = `https://t.me/BlackwellGlobal_Bot?start=${idGenerado}`;
                     }
                 })
                 .catch(error => {
