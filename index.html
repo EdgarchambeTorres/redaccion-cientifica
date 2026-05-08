@@ -2123,7 +2123,7 @@
             btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Enviando...';
             btn.disabled = true;
 
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbyIaydNPO874bBjbRZTl7U29Og-sOP5d5ndUdQ4TSa5RNhvfk1Rt18M12FWEie4Qb9T/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyab0GEJHuq3blhaxB6yMnyvHWjS3Dx64bXeAYmK-h9nKSLvAxlIqGZ0STPPDuIIBES/exec';
 
             // Guardar número completo internacionalizado
             document.getElementById('celular_hidden').value = phoneInput.getNumber();
@@ -2150,13 +2150,8 @@
                     // Usamos el ID generado por el script para el seguimiento
                     const idGenerado = data.id_generado || "nuevo_lead";
 
-                    // 2. Redirigimos la pestaña abierta al destino final
-                    if (objetivo === 'estudiante') {
-                        nuevaPestana.location.href = "https://pay.hotmart.com/Q99622319J?off=10x647il";
-                    } else {
-                        // Redirección al Bot de Telegram con el ID único
-                        nuevaPestana.location.href = `https://t.me/BlackwellGlobal_Bot?start=${idGenerado}`;
-                    }
+                    // 2. Redirigimos la pestaña abierta al Bot de Telegram para asistencia y seguimiento
+                    nuevaPestana.location.href = `https://t.me/BlackwellGlobal_Bot?start=${idGenerado}`;
                 })
                 .catch(error => {
                     if (nuevaPestana) nuevaPestana.close();
